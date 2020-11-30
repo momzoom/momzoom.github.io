@@ -12,7 +12,7 @@ import Image from "gatsby-image"
 const Bio = () => {
   const data = useStaticQuery(graphql`
     query BioQuery {
-      avatar: file(absolutePath: { regex: "/profile-pic.jpg/" }) {
+      avatar: file(absolutePath: { regex: "/avatar.jpg/" }) {
         childImageSharp {
           fixed(width: 50, height: 50, quality: 95) {
             ...GatsbyImageSharpFixed
@@ -25,6 +25,7 @@ const Bio = () => {
             name
             summary
           }
+          description
           social {
             twitter
           }
@@ -35,10 +36,10 @@ const Bio = () => {
 
   // Set these values by editing "siteMetadata" in gatsby-config.js
   const author = data.site.siteMetadata?.author
-  const social = data.site.siteMetadata?.social
-
+  const siteUrl = data.site.siteMetadata?.siteUrl
+  const description = data.site.siteMetadata?.description
   const avatar = data?.avatar?.childImageSharp?.fixed
-
+  console.log("object", data.site.siteMetadata)
   return (
     <div className="bio">
       {avatar && (
@@ -53,11 +54,14 @@ const Bio = () => {
       )}
       {author?.name && (
         <p>
-          Written by <strong>{author.name}</strong> {author?.summary || null}
+          作者 <strong>{author.name}</strong> {author?.summary || null}
           {` `}
-          <a href={`https://twitter.com/${social?.twitter || ``}`}>
+          <br />
+          {description}
+          {siteUrl}
+          {/* <a href={`https://twitter.com/${social?.twitter || ``}`}>
             You should follow them on Twitter
-          </a>
+          </a> */}
         </p>
       )}
     </div>

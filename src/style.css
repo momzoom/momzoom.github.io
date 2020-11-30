@@ -259,6 +259,10 @@ a:focus {
   margin: 0;
 }
 
+/* .ant-layout-header.header {
+  background-color: transparent;
+} */
+
 .post-list-item {
   margin-bottom: var(--spacing-8);
   margin-top: var(--spacing-8);

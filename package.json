@@ -8,6 +8,7 @@
     "url": "https://github.com/momzoom/momzoom.github.io/issues"
   },
   "dependencies": {
+    "antd": "^4.8.6",
     "gatsby": "^2.26.1",
     "gatsby-image": "^2.5.0",
     "gatsby-plugin-feed": "^2.7.0",
