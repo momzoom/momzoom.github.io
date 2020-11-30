@@ -5,7 +5,7 @@
   "version": "0.1.0",
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+    "url": "https://github.com/momzoom/momzoom.github.io/issues"
   },
   "dependencies": {
     "gatsby": "^2.26.1",
@@ -35,11 +35,11 @@
     "gh-pages": "^3.1.0",
     "prettier": "2.1.2"
   },
-  "homepage": "https://github.com/gatsbyjs/gatsby-starter-blog#readme",
+  "homepage": "https://momzoom.github.io",
   "keywords": [
     "gatsby"
   ],
-  "license": "0BSD",
+  "license": "MIT License",
   "main": "n/a",
   "repository": {
     "type": "git",
