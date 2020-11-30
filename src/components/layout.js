@@ -1,7 +1,8 @@
 import React from "react"
-import { Link, push } from "gatsby"
-import { Layout as AntLayout, PageHeader, Image } from "antd"
-import logo from "../../static/logo@2x.png" // 这里告诉 Webpack 这个 JS 文件用了这张图片
+import { Link, navigateTo } from "gatsby"
+import { Layout as AntLayout, PageHeader, Menu } from "antd"
+import { gold } from "@ant-design/colors"
+import logo from "../../static/logo@2x.png"
 
 // import {
 //   UserOutlined,
@@ -15,24 +16,17 @@ const Layout = ({ location, title, children }) => {
   const rootPath = `${__PATH_PREFIX__}/`
   const isRootPath = location.pathname === rootPath
   let header
-  {
-    /* <h1 className="main-heading">
-        <Link to="/">{title}</Link>
-      </h1> */
-  }
   if (isRootPath) {
     header = (
-      <h1 className="main-heading">
-        <Link to="/">
-          <Image width={120} src={logo} />
-        </Link>
-      </h1>
+      <Link style={{ float: "left" }} to="/">
+        <img alt="" width={120} src={logo} />
+      </Link>
     )
   } else {
     header = (
       <PageHeader
         // className="site-page-header"
-        onBack={() => push("/")}
+        onBack={() => navigateTo("/")}
         title={title}
       />
     )
@@ -40,15 +34,18 @@ const Layout = ({ location, title, children }) => {
 
   return (
     <AntLayout data-is-root-path={isRootPath}>
-      <Header className="header">
-        <div className="logo" />
-
-        <header className="global-header">{header}</header>
-        {/* <Menu mode="horizontal" defaultSelectedKeys={["2"]}>
-          <Menu.Item key="1">nav 1</Menu.Item>
-          <Menu.Item key="2">nav 2</Menu.Item>
-          <Menu.Item key="3">nav 3</Menu.Item>
-        </Menu> */}
+      <Header style={{ backgroundColor: gold[5] }}>
+        {header}
+        <Menu
+          theme="dark"
+          style={{ backgroundColor: gold[5], float: "right" }}
+          mode="horizontal"
+          defaultSelectedKeys={[""]}
+        >
+          <Menu.Item key="1">日常分享</Menu.Item>
+          <Menu.Item key="2">关于我们</Menu.Item>
+          <Menu.Item key="3">技术探索</Menu.Item>
+        </Menu>
       </Header>
       <AntLayout>
         {/* <Sider width={200} className="site-layout-background">
@@ -83,10 +80,7 @@ const Layout = ({ location, title, children }) => {
           </Menu>
         </Sider>
          */}
-        <AntLayout
-          className="global-wrapper"
-          style={{ padding: "0 24px 24px" }}
-        >
+        <AntLayout className="global-wrapper">
           <Content
             className="site-layout-background"
             style={{
@@ -97,9 +91,9 @@ const Layout = ({ location, title, children }) => {
           >
             {children}
           </Content>
-          <Footer style={{ textAlign: "center" }}>萌天天小朋友前端团队</Footer>
         </AntLayout>
       </AntLayout>
+      <Footer style={{ textAlign: "center" }}>萌天天小朋友前端团队</Footer>
     </AntLayout>
   )
 }
